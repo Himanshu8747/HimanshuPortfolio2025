@@ -4,9 +4,10 @@ interface MotionTextProps {
   text: string;
   delay?: number;
   className?: string;
+  scrollReveal?: boolean;
 }
 
-export function MotionText({ text, delay = 0, className = '' }: MotionTextProps) {
+export function MotionText({ text, delay = 0, className = '', scrollReveal = false }: MotionTextProps) {
   const letters = Array.from(text);
 
   const container = {
@@ -43,11 +44,16 @@ export function MotionText({ text, delay = 0, className = '' }: MotionTextProps)
       className={`inline-flex ${className}`}
       variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      whileInView={scrollReveal ? "visible" : undefined}
+      animate={!scrollReveal ? "visible" : undefined}
+      viewport={{ once: true, margin: "-100px" }}
     >
       {letters.map((letter, index) => (
-        <motion.span key={index} variants={child}>
+        <motion.span 
+          key={index} 
+          variants={child}
+          className="inline-block"
+        >
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
