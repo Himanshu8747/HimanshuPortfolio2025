@@ -7,24 +7,33 @@ export function Hero() {
   return (
     <section className="min-h-screen relative flex items-center overflow-hidden">
       {/* Enhanced background effects */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_50%_50%,rgba(var(--primary-rgb),0.13)_0,rgba(var(--primary-rgb),0)_100%)]" />
-        <motion.div 
-          className="absolute inset-0"
-          initial={{ backgroundPosition: '0% 0%' }}
-          animate={{ 
-            backgroundPosition: ['0% 0%', '100% 100%'],
-            transition: { 
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear"
-            }
+      <div className="absolute inset-0 -z-10 gradient-bg">
+        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(22,163,74,0.12)_0,rgba(0,0,0,0)_100%)]" />
+
+        {/* Animated gradient borders */}
+        <motion.div
+          className="absolute top-0 left-1/4 w-px h-3/4 gradient-border"
+          animate={{
+            height: ["0%", "70%", "0%"],
+            opacity: [0, 1, 0],
           }}
-          style={{
-            background: 'radial-gradient(circle at center, transparent 0%, transparent 100%)',
-            backgroundSize: '400% 400%'
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-1/4 w-px h-3/4 gradient-border"
+          animate={{
+            height: ["0%", "70%", "0%"],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 5,
+            delay: 2.5,
+            repeat: Infinity,
+            ease: "linear",
           }}
         />
       </div>
@@ -36,7 +45,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {[...Array(3)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-64 h-64 rounded-full bg-primary/5"
@@ -69,13 +78,13 @@ export function Hero() {
 
           <MotionText
             text="John Doe"
-            className="text-6xl md:text-7xl font-bold mb-4"
+            className="text-6xl md:text-7xl font-bold mb-4 text-white"
           />
 
           <MotionText
             text="Frontend Developer & UI/UX Designer"
             delay={1}
-            className="text-3xl md:text-4xl text-muted-foreground mb-8"
+            className="text-3xl md:text-4xl text-primary/80 mb-8"
           />
 
           <motion.div
@@ -86,7 +95,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="text-lg px-8 hover:scale-105 transition-transform relative overflow-hidden group"
+              className="text-lg px-8 hover:scale-105 transition-transform relative overflow-hidden group bg-primary/20 hover:bg-primary/30 text-white"
               data-magnetic
             >
               <span className="relative z-10">Let's Connect</span>
@@ -101,7 +110,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 hover:scale-105 transition-transform"
+              className="text-lg px-8 hover:scale-105 transition-transform border-primary/50 text-primary hover:bg-primary/10"
               data-magnetic
             >
               View Projects
@@ -109,6 +118,9 @@ export function Hero() {
           </motion.div>
         </div>
       </ParallaxContainer>
+
+      {/* Animated grid background */}
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(rgba(22,163,74,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(22,163,74,0.1)_1px,transparent_1px)] bg-[size:100px_100px]" />
     </section>
   );
 }
