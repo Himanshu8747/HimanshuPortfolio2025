@@ -124,15 +124,6 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 hover:scale-105 transition-transform border-primary/50 text-primary hover:bg-primary/10"
-              data-magnetic
-            >
-              View Projects
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
               className="text-lg px-8 hover:scale-105 transition-transform border-primary/50 text-primary hover:bg-primary/10 gap-2"
               data-magnetic
               asChild
