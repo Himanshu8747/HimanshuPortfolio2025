@@ -1,5 +1,6 @@
 import { ParallaxContainer } from '../animated/ParallaxContainer';
 import { TimelineAnimation } from '../animated/TimelineAnimation';
+import { GridBackground } from '../animated/GridBackground';
 
 const educationData = [
   {
@@ -24,7 +25,8 @@ const educationData = [
 
 export function Education() {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 relative overflow-hidden bg-black/50">
+      <GridBackground className="rotate-180" /> {/* Rotated for variety */}
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-center">Education & Journey</h2>
         <ParallaxContainer className="max-w-4xl mx-auto">
