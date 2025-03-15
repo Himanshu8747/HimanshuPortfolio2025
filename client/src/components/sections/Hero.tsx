@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { MotionText } from '../animated/MotionText';
 import { ParallaxContainer } from '../animated/ParallaxContainer';
 import { Button } from '../ui/button';
+import { Download } from 'lucide-react'; // Add this import
 
 export function Hero() {
   return (
@@ -104,7 +105,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
-            className="flex gap-4"
+            className="flex gap-4 flex-wrap"
           >
             <Button
               size="lg"
@@ -127,6 +128,19 @@ export function Hero() {
               data-magnetic
             >
               View Projects
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 hover:scale-105 transition-transform border-primary/50 text-primary hover:bg-primary/10 gap-2"
+              data-magnetic
+              asChild
+            >
+              <a href="/Himanshu_Javiya_resume.pdf" download>
+                <Download className="w-5 h-5" />
+                <span>Download Resume</span>
+              </a>
             </Button>
           </motion.div>
         </div>
