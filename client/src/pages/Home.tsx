@@ -7,6 +7,7 @@ import { Experience } from '@/components/sections/Experience';
 import { Services } from '@/components/sections/Services';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
+import { OpenSource } from '@/components/sections/OpenSource';
 import { MagneticCursor } from '@/components/animated/MagneticCursor';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <About />
       <Services />
       <Projects />
+      <OpenSource />
       <Skills />
       <Education />
       <Experience />
