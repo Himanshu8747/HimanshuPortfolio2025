@@ -25,11 +25,11 @@ export function OpenSource() {
   return (
     <section className="py-20 relative overflow-hidden bg-black/50">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(22,163,74,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(22,163,74,0.1)_1px,transparent_1px)] bg-[size:100px_100px]" />
-      
+
       <div className="container mx-auto px-4">
         <ParallaxContainer>
           <h2 className="text-4xl font-bold mb-12 text-center">Open Source Contributions</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {openSourceProjects.map((project, index) => (
               <motion.div
@@ -39,9 +39,9 @@ export function OpenSource() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <Card className="overflow-hidden h-full backdrop-blur-sm" data-magnetic>
+                <Card className="overflow-hidden group cursor-pointer" data-magnetic>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative aspect-video overflow-hidden">
@@ -55,7 +55,7 @@ export function OpenSource() {
                     <CardContent className="p-6">
                       <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                       <p className="text-muted-foreground mb-4">{project.description}</p>
-                      
+
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tech.map((tech) => (
                           <span
@@ -66,7 +66,7 @@ export function OpenSource() {
                           </span>
                         ))}
                       </div>
-                      
+
                       <div className="flex gap-3">
                         <Button
                           variant="outline"
@@ -76,7 +76,7 @@ export function OpenSource() {
                         >
                           <a href={project.github} target="_blank" rel="noopener noreferrer">
                             <Github className="w-4 h-4" />
-                            <span>View on GitHub</span>
+                            <span>GitHub</span>
                           </a>
                         </Button>
                       </div>
