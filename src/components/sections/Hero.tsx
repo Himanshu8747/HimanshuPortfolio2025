@@ -1,10 +1,70 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { MotionText } from '../animated/MotionText';
 import { ParallaxContainer } from '../animated/ParallaxContainer';
 import { Button } from '../ui/button';
-import { Download } from 'lucide-react'; // Add this import
+import { Download } from 'lucide-react';
+import { AnimatedCodeDisplay } from '../animated/AnimatedCodeDisplay';
 
 export function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+  const { scrollYProgress } = useScroll();
+  
+  // Transform values for parallax effect
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.3]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.7]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
+  
+  // Update scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll function that doesn't modify the URL
+  const handleSmoothScroll = (e) => {
+    e.preventDefault();
+    // Don't use href attribute to avoid hash in URL
+    const targetElement = document.getElementById('contact');
+    
+    if (targetElement) {
+      // Get the element's position relative to the document
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      
+      // Longer duration for smoother effect (in ms)
+      const duration = 1500;
+      let startTime = null;
+      
+      // Custom easing function for smoother animation (ease-in-out cubic)
+      function easeInOutCubic(t) {
+        return t < 0.5 
+          ? 4 * t * t * t 
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+      
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * easedProgress);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+      
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <section className="min-h-screen relative flex items-center overflow-hidden">
       {/* Enhanced background effects */}
@@ -41,10 +101,8 @@ export function Hero() {
 
       {/* Grid Pattern */}
       <div className="absolute inset-0 -z-20">
-        {/* Base grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(22,163,74,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(22,163,74,0.1)_1px,transparent_1px)] bg-[size:100px_100px]" />
 
-        {/* Animated vertical lines */}
         <div className="absolute inset-0 flex justify-around">
           {[...Array(5)].map((_, i) => (
             <motion.div
@@ -65,7 +123,6 @@ export function Hero() {
           ))}
         </div>
 
-        {/* Pulsating glow effect */}
         <motion.div
           className="absolute inset-0 bg-primary/5"
           animate={{
@@ -79,26 +136,27 @@ export function Hero() {
         />
       </div>
 
-      <ParallaxContainer className="container mx-auto px-4">
-        <div className="max-w-4xl">
+      <div className="container mx-auto px-4 md:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Text content */}
+        <ParallaxContainer className="max-w-2xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-primary mb-4"
+            className="text-2xl text-primary mb-4"
           >
             Hello, I'm
           </motion.p>
 
           <MotionText
-            text="John Doe"
-            className="text-6xl md:text-7xl font-bold mb-4 text-white"
+            text="Himanshu Javiya"
+            className="text-5xl md:text-7xl font-bold mb-4 text-white"
           />
 
           <MotionText
-            text="Frontend Developer & UI/UX Designer"
+            text="Frontend Developer & Accessibility Advocate"
             delay={1}
-            className="text-3xl md:text-4xl text-primary/80 mb-8"
+            className="text-2xl md:text-4xl text-primary/80 mb-8"
           />
 
           <motion.div
@@ -111,6 +169,7 @@ export function Hero() {
               size="lg"
               className="text-lg px-8 hover:scale-105 transition-transform relative overflow-hidden group bg-primary/20 hover:bg-primary/30 text-white"
               data-magnetic
+              onClick={handleSmoothScroll}
             >
               <span className="relative z-10">Let's Connect</span>
               <motion.div
@@ -129,13 +188,23 @@ export function Hero() {
               asChild
             >
               <a href="/Himanshu_Javiya_resume.pdf" download>
-                <Download className="w-5 h-5" />
                 <span>Download Resume</span>
               </a>
             </Button>
           </motion.div>
-        </div>
-      </ParallaxContainer>
+        </ParallaxContainer>
+
+        {/* Animated Code Display - replacing the profile image */}
+        <motion.div
+          style={{ 
+            scale,
+            opacity,
+            y,
+          }}
+        >
+          <AnimatedCodeDisplay />
+        </motion.div>
+      </div>
     </section>
   );
 }

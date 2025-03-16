@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Progress } from '../ui/progress';
 
 const skills = [
-  { name: "Frontend Development", level: 95 },
-  { name: "UI/UX Design", level: 90 },
-  { name: "React & Next.js", level: 92 },
+  { name: "Frontend Development", level: 85 },
+  { name: "UI/UX Design", level: 70 },
+  { name: "React", level: 92 },
   { name: "TypeScript", level: 88 },
-  { name: "Node.js", level: 85 },
-  { name: "GraphQL", level: 80 }
+  { name: "Node.js", level: 65 },
+  { name: "Accessibility", level: 80 }
 ];
 
 export function Skills() {
@@ -24,6 +24,7 @@ export function Skills() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
             >
               <div className="flex justify-between mb-2">
                 <h3 className="font-medium">{skill.name}</h3>

@@ -10,7 +10,7 @@ const skills = [
 
 export function About() {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 px-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <ParallaxContainer>
           <motion.h2 

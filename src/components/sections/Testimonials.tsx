@@ -4,24 +4,25 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Product Manager",
-    company: "Tech Corp",
-    content: "Working with John was an absolute pleasure. His attention to detail and creative solutions helped us achieve our project goals ahead of schedule."
+    name: "David Vindas Solis",
+    role: "Full-Stack Engineer",
+    company: "MetLife",
+    content: "Himanshu’s expertise in Vue.js and accessibility made a huge impact on our projects. His problem-solving skills and attention to detail set him apart."
   },
   {
-    name: "Michael Chen",
-    role: "CEO",
-    company: "StartUp Inc",
-    content: "John's expertise in frontend development transformed our application. His work exceeded our expectations and helped us deliver a superior user experience."
+    name: "Genevieve Rainey",
+    role: "Project Manager",
+    company: "CurbCutOS",
+    content: "Himanshu's work in accessibility and frontend development significantly improved our platform. He’s a valuable and detail-oriented teammate."
   },
   {
-    name: "Emily Williams",
-    role: "Design Director",
-    company: "Creative Agency",
-    content: "An exceptional talent in both design and development. John's ability to understand and implement complex requirements is truly remarkable."
+    name: "Anant Panchal",
+    role: "Senior Software Engineer",
+    company: "Tech Solutions",
+    content: "Himanshu is an exceptional frontend developer. His expertise in React, Vue.js, and mentoring junior developers makes him a key asset to any team."
   }
 ];
+
 
 export function Testimonials() {
   return (
