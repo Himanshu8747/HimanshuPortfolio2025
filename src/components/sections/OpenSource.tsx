@@ -8,14 +8,14 @@ const openSourceProjects = [
     title: "Sifusec",
     description: "Contributed to the UI development of a security platform that prevents fraud in Solana smart contracts. Designed and implemented user-friendly interfaces for monitoring on-chain security, improving accessibility for developers and users.",
     image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80",
-    github: "https://github.com/yourusername/sifusec",
+    github: "https://github.com/pratik-codes/SIFU-Security",
     tech: ["Solana", "React", "Security"]
   },
   {
     title: "Dashlit",
     description: "Developed a feature-rich browser extension for productivity enhancement. Enables efficient management of links, to-do lists, meetings, and emails in a single interface with customizable widgets and quick access shortcuts.",
     image: "https://images.unsplash.com/photo-1618335829737-2228915674e0?auto=format&fit=crop&w=800&q=80",
-    github: "https://github.com/yourusername/dashlit",
+    github: "https://github.com/pratik-codes/Dashlit",
     tech: ["Browser Extension", "JavaScript", "UI/UX"]
   }
 ];
